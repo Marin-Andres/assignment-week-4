@@ -18,13 +18,22 @@ namespace CustomerApi.Controllers
 
         }
 
-        [HttpPost(Name = "AddCustomer")]
+        [HttpPost(Name = "Add Customer")]
         public async Task<JsonResult> AddCustomer(string firstName, string lastName)
         {
 
             var customer = await _customerMethods.AddCustomer(firstName, lastName, DateTime.Now.AddYears(-20));
 
             return new JsonResult(customer); 
+        }
+
+        [HttpDelete(Name ="Remove Customer")]
+        public async Task<JsonResult> RemoveCustomer(int CustomerId)
+        {
+
+            var customer = await _customerMethods.RemoveCustomer(CustomerId);
+
+            return new JsonResult(customer);
         }
 
 

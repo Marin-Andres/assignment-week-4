@@ -43,6 +43,21 @@ namespace ApplicationTier.Classes
             return Mapper(customer);
         }
 
+        public async Task<CustomerDto> RemoveCustomer(int CustomerId)
+        {
+            var context = new IndustryConnectWeek2Context();
+
+                var customer = await context.Customers.FirstOrDefaultAsync(c => c.Id == CustomerId);
+                
+                if (customer != null)
+                {
+                    context.Customers.Remove(customer);
+                    await context.SaveChangesAsync();
+                }
+
+            return Mapper(customer);
+        }
+
 
         private static CustomerDto Mapper(Customer? customer)
         {
