@@ -14,7 +14,7 @@ namespace ApplicationTier.Classes
     {
         public SaleMethods() { }
 
-        public async Task<SaleDto> AddSale(int customerId, int productId, int storeId, DateTime? dateSold)
+        public async Task<SaleDto> AddSale(int customerId, int productId, int storeId, string? dateSoldString)
         {
             var context = new IndustryConnectWeek2Context();
 
@@ -23,8 +23,17 @@ namespace ApplicationTier.Classes
                 CustomerId = customerId,
                 ProductId = productId,
                 StoreId = storeId,
-                DateSold = dateSold
             };
+
+            DateTime dateSold;
+            if (DateTime.TryParse(dateSoldString, out dateSold))
+            {
+                sale.DateSold = dateSold;
+            }
+            else
+            {
+                sale.DateSold = null;
+            }
 
             context.Add(sale);
             await context.SaveChangesAsync();

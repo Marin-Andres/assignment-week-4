@@ -18,7 +18,7 @@ namespace CustomerApi.Controllers
 
         }
 
-        [HttpPost("AddCustomer", Name = "Add Customer")]
+        [HttpPost(Name = "Add Customer")]
         public async Task<JsonResult> AddCustomer(string firstName, string lastName)
         {
 
@@ -27,7 +27,7 @@ namespace CustomerApi.Controllers
             return new JsonResult(customer); 
         }
 
-        [HttpPost("RemoveCustomer", Name ="Remove Customer")]
+        [HttpDelete(Name ="Remove Customer")]
         public async Task<JsonResult> RemoveCustomer(int CustomerId)
         {
 

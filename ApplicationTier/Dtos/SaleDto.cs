@@ -17,8 +17,5 @@ namespace ApplicationTier.Dtos
         public int? StoreId { get; set; }
 
         public DateTime? DateSold { get; set; }
-
-        public decimal? TotalSale { get; set; }
-
     }
 }
